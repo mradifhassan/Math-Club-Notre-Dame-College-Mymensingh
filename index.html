@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Club - Notre Dame College Mymensingh</title>
+    <meta name="description" content="Official website for the Math Club of Notre Dame College Mymensingh. Explore events, articles, and resources.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Ubuntu (EN) and Hind Siliguri (BN - similar to Kalpurush) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for LaTeX Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Ubuntu', 'sans-serif'],
+              bengali: ['"Hind Siliguri"', 'sans-serif'],
+            },
+            colors: {
+              ndcm: {
+                primary: '#1a365d',
+                accent: '#4c1d95',
+                gold: '#b45309',
+                light: '#f8fafc'
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-white text-slate-900 font-sans min-h-screen flex flex-col selection:bg-ndcm-gold selection:text-white overflow-x-hidden">
+    
+    <!-- App Root -->
+    <div id="app" class="flex flex-col min-h-screen">
+      <!-- Loading State -->
+      <div class="flex items-center justify-center h-screen bg-white">
+        <div class="flex flex-col items-center animate-pulse">
+          <div class="text-6xl font-bold text-ndcm-primary mb-4">Σ</div>
+          <p class="text-ndcm-primary font-bold">Loading Math Club NDCM...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
