@@ -3,22 +3,26 @@
 const FORMSPREE_ID = "xdkvyoqy"; 
 
 const SITE_DATA = {
-    name: { en: "Math Club Notre Dame College Mymensingh", bn: "গণিত ক্লাব নটর ডেম কলেজ ময়মনসিংহ" },
+    name: { en: "Notre Dame College Math Club", bn: "নটর ডেম কলেজ গণিত ক্লাব" },
     college: { en: "Notre Dame College Mymensingh", bn: "নটর ডেম কলেজ ময়মনসিংহ" },
-    // Add your logo URL here. If empty, it defaults to the text logo.
     logo: "./assets/logo.jpg", 
-    email: "mathclub@ndcm.edu.bd",
-    address: { en: "Barora, Mymensingh", bn: "বারেরা, ময়মনসিংহ" },
+    email: "m.radifhassan3@gmail.com",
+    address: { en: "City Bypass, Barera, Mymensingh", bn: "সিটি বাইপাস, বাড়েরা, ময়মনসিংহ" },
     copyright: { en: "All rights reserved.", bn: "সর্বস্বত্ত্ব সংরক্ষিত।"},
-    phone: { en: "+880 1234 567890", bn: "+৮৮০ ১২৩৪ ৫৬৭৮৯০"},
-    year: { en: "2025", bn: "২০২৫"}
-};
+    phone: { en: "+880 1609-321970", bn: "+৮৮০ ১৬০৯-৩২১৯৭০"},
+    year: { en: "2025", bn: "২০২৫"},
+    location: { en: "Mymensingh", bn: "ময়মনসিংহ"},
+    events: { en: "Lectures, workshops and competitions.", bn: "লেকচার, কর্মশালা এবং প্রতিযোগিতা"},
+    host: { en: "Want to host a talk?", bn: "আলোচক হতে আগ্রহী?" },
+    encouragement: { en: "We encourage students to share their knowledge.", bn: "আমরা শিক্ষার্থীদেরকে তাদের জ্ঞান বিতরণে উৎসাহিত করি।"},
+    resources: { en: "Tools, YouTube channels, and papers we love.", bn: "আমাদের পছন্দের হাতিয়ার, ইউটিউব চ্যানেল ও গবেষণাপত্রসমূহ"}
+}
 
 const DICTIONARY = {
     'home': { en: 'Home', bn: 'হোম' },
-    'events': { en: 'Events', bn: 'ইভেন্ট' },
-    'articles': { en: 'Articles', bn: 'আর্টিকেল' },
-    'resources': { en: 'Resources', bn: 'রিসোর্স' },
+    'events': { en: 'Events', bn: 'অনুষ্ঠানসমূহ' },
+    'articles': { en: 'Articles', bn: 'প্রবন্ধ' },
+    'resources': { en: 'Resources', bn: 'উপকরনসমূহ' },
     'committee': { en: 'Committee', bn: 'কমিটি' },
     'contact': { en: 'Contact', bn: 'যোগাযোগ' },
     'join_now': { en: 'Join Now', bn: 'যোগ দিন' },
@@ -27,8 +31,8 @@ const DICTIONARY = {
     'hero_title': { en: 'In the glow of reasoning,', bn: 'যুক্তির দীপ্তিতে, ' },
     'hero_highlight': { en: 'let the light of Maths burn bright', bn: 'জ্বলে উঠুক গণিতের  জ্যোতি' },
     'hero_desc': { 
-        en: 'Welcome to the NDCM Math Club. A sanctuary for thinkers, solvers, and dreamers. Join us to unravel the mysteries of the universe through numbers.', 
-        bn: 'এনডিসিএম গণিত ক্লাবে স্বাগতম। চিন্তাবিদ এবং সমাধানকারীদের জন্য একটি আশ্রয়স্থল। সংখ্যার মাধ্যমে মহাবিশ্বের রহস্য উন্মোচন করতে আমাদের সাথে যোগ দিন।'
+        en: 'Math is not about answers; its about proof and showing why something is true. Elegant proof expresses clarity, simplicity, and intellectual beauty in mathematics.', 
+        bn: 'গণিত মানেই উত্তর না; এটা হলো যুক্তি এবং দেখানো কেন এটা সত্য হলো। যথাযথ প্রমাণ গণিতের মধ্যেকার স্বচ্ছতা, সরলতা এবং বুদ্ধিবৃত্তিক সৌন্দর্যকে প্রকাশ করে।'
     },
     'view_schedule': { en: 'View Schedule', bn: 'সময়সূচী দেখুন' },
     'register': { en: 'Register', bn: 'রেজিস্ট্রেশন' },
@@ -37,7 +41,7 @@ const DICTIONARY = {
     'send_message': { en: 'Send Message', bn: 'বার্তা পাঠান' },
     'name': { en: 'Name', bn: 'নাম' },
     'message': { en: 'Message', bn: 'বার্তা' },
-    'equation_viz': { en: 'Equation Visualization', bn: 'সমীকরণ ভিজ্যুয়ালাইজেশন' },
+    'equation_viz': { en: 'Equation Visualization', bn: 'সমীকরণ চিত্র' },
     'loading': { en: 'Loading...', bn: 'লোড হচ্ছে...' },
     'submit_draft': { en: 'Submit Draft', bn: 'খসড়া জমা দিন' },
     'article_prompt': { en: 'Have an interesting math topic to write about?', bn: 'লেখার মতো কোনো মজার গণিত বিষয় আছে?' }
@@ -58,30 +62,30 @@ const NEWS_SLIDES = [
     {
         id: 1,
         tag: { en: "Latest Event", bn: "সর্বশেষ ইভেন্ট" },
-        title: { en: "National Math Olympiad Registration", bn: "জাতীয় গণিত অলিম্পিয়াড রেজিস্ট্রেশন" },
-        desc: { en: "Selection round this Friday at Main Auditorium.", bn: "এই শুক্রবার মূল অডিটোরিয়ামে বাছাই পর্ব।" },
+        title: { en: "National Math Olympiad Preparation", bn: "জাতীয় গণিত অলিম্পিয়াড প্রস্তুতি" },
+        desc: { en: "Preparation round upcoming Wednesday in Room 402.", bn: "আগামী বুধবার ৪০২ নং কক্ষে প্রস্তুতি পর্ব অনুষ্ঠিত হবে" },
         color: "bg-ndcm-accent"
     },
     {
         id: 2,
         tag: { en: "Announcement", bn: "ঘোষণা" },
-        title: { en: "Weekly Problem Solving", bn: "সাপ্তাহিক সমস্যা সমাধান" },
-        desc: { en: "Thursday at 2:00 PM in Room 304.", bn: "বৃহস্পতিবার দুপুর ২:০০ টায় ৩০৪ নং কক্ষে।" },
+        title: { en: "Weekly Problem Solving Round", bn: "সাপ্তাহিক সমস্যা সমাধান পর্ব" },
+        desc: { en: "Wednesday at 12:00 PM in Room 402.", bn: "বুধবার দুপুর ১২:০০ টায় ৪০২ নং কক্ষে।" },
         color: "bg-ndcm-primary"
     }
 ];
 
 const EVENTS = [
     {
-        title: { en: "The Beauty of Prime Numbers", bn: "মৌলিক সংখ্যার সৌন্দর্য" },
-        date: { en: "OCT 15", bn: "১৫ অক্টোবর" },
-        time: { en: "4:00 PM", bn: "বিকেল ৪:০০" },
-        location: { en: "College Auditorium", bn: "কলেজ অডিটোরিয়াম" },
+        title: { en: "Discussion about Bangladesh Math Olympiad Contents", bn: "বাংলাদেশ গণিত অলিম্পিয়াডের পাঠ্যসূচি নিয়ে আলোচনা" },
+        date: { en: "DEC 03", bn: "০৩ ডিসেম্বর" },
+        time: { en: "12:00 PM", bn: "দুপুর ১২:০০" },
+        location: { en: "Room 402", bn: "৪০২ নং কক্ষ" },
         type: { en: "Lecture", bn: "লেকচার" },
-        desc: { en: "An exploration into the distribution of primes and the Riemann Hypothesis.", bn: "মৌলিক সংখ্যার বণ্টন এবং রিম্যান হাইপোথিসিস নিয়ে আলোচনা।" },
+        desc: { en: "An elaborative lectures and discussing about the problems came to BdMO past years and try to solve those questions according to ability", bn: "বিডিএমওতে আসা বিগত বছরের প্রশ্নপত্র নিয়ে বিস্তর আলোচনা এবং সামর্থ্য অনুযায়ী সেসব প্রশ্নের সমাধান করার চেষ্টা।" },
         color: "bg-blue-100 text-blue-800"
-    },
-    {
+    }
+    /*{
         title: { en: "Inter-College Integration Bee", bn: "আন্তঃকলেজ ইন্টিগ্রেশন বি" },
         date: { en: "NOV 02", bn: "০২ নভেম্বর" },
         time: { en: "2:30 PM", bn: "দুপুর ২:৩০" },
@@ -107,7 +111,7 @@ const EVENTS = [
         type: { en: "Lecture", bn: "লেকচার" },
         desc: { en: "Understanding shapes, surfaces, and why a coffee mug is a donut.", bn: "আকৃতি, তল এবং কেন একটি কফি মগ একটি ডোনাটের সমান তা বোঝা।" },
         color: "bg-blue-100 text-blue-800"
-    }
+    }*/
 ];
 
 const RESOURCES = [
@@ -123,15 +127,15 @@ const ARTICLES = [
     {
         id: 101,
         title: { en: "The Infinite Hotel Paradox", bn: "অসীম হোটেলের প্যারাডক্স" },
-        author: { en: "Aarav Rahman", bn: "আরভ রহমান" },
-        role: { en: "President", bn: "প্রেসিডেন্ট" },
-        date: { en: "Sep 20, 2024", bn: "২০ সেপ্টেম্বর, ২০২৪" },
-        readTime: { en: "5 min read", bn: "৫ মিনিট পাঠ" },
+        author: { en: "Md Radif Hasan", bn: "মোঃ রাদ্বীফ হাসান" },
+        role: { en: "President", bn: "সভাপতি" },
+        date: { en: "Nov 26, 2025", bn: "২৬ নভেম্বর, ২০২৫" },
+        readTime: { en: "1 min read", bn: "১ মিনিট পাঠ" },
         desc: { 
             en: "Imagine a hotel with infinite rooms, all occupied. What happens when a new guest arrives?", 
             bn: "ভাবুন এমন একটি হোটেল যার কক্ষ সংখ্যা অসীম এবং সবগুলোই পূর্ণ। নতুন অতিথি এলে কি হবে?" 
         },
-        image: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&q=80&w=600",
+        image: "https://imgs.search.brave.com/eya5oUzh8bfOlXm79fOZbzgGjQYzYCovr_CWi1zfQRA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1tYW5hZ2VyLnN0/YXJzaW5zaWRlci5j/b20vZ2FsbGVyeS8x/MDgwL25hXzY3ZGFk/NGMyZjM0MzkuanBn",
         // Content containing LaTeX
         content: {
             en: `
@@ -155,12 +159,12 @@ const ARTICLES = [
     {
         id: 102,
         title: { en: "Euler's Identity", bn: "অয়লারের অভেদ" },
-        author: { en: "Ishita Jahan", bn: "ইশিতা জাহান" },
-        role: { en: "Vice President", bn: "ভাইস প্রেসিডেন্ট" },
-        date: { en: "Oct 12, 2024", bn: "১২ অক্টোবর, ২০২৪" },
-        readTime: { en: "6 min read", bn: "৬ মিনিট পাঠ" },
+        author: { en: "Md Radif Hasan", bn: "মোঃ রাদ্বীফ হাসান" },
+        role: { en: "President", bn: "সভাপতি" },
+        date: { en: "Nov 26, 2025", bn: "২৬ নভেম্বর, ২০২৫" },
+        readTime: { en: "1 min read", bn: "১ মিনিট পাঠ" },
         desc: { en: "Combining e, i, pi, 1, and 0 into a single elegant statement.", bn: "e, i, pi, 1 এবং 0 এর এক বিস্ময়কর মিলন।" },
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600",
+        image: "https://cdn.mos.cms.futurecdn.net/cv2W6h6obxouAgNzfnJ6w3-700-80.jpg.webp",
         content: {
             en: `
                 <p>Often called the most beautiful equation in mathematics, Euler's identity connects five fundamental constants:</p>
@@ -183,9 +187,16 @@ const ARTICLES = [
 ];
 
 const COMMITTEE = [
-    { name: {en: "Md Radif Hasan", bn: "মোঃ রাদ্বীফ হাসান"}, pos: {en: "President", bn: "প্রেসিডেন্ট"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "./assets/committee/radif.jpg" },
-    { name: {en: "Fahmid Rahman Sakif", bn: "ফাহমিদ রহমান সাকিফ"}, pos: {en: "General Secretary", bn: "সাধারণ সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=SS&backgroundColor=b45309" },
-    { name: {en: "Arif Mahmud Fahad", bn: "আরিফ মাহমুদ ফাহাদ"}, pos: {en: "Organizing Secretary", bn: "সাংগঠনিক সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "../assets/committee/fahad.jpg" },
+    { name: {en: "Md Radif Hasan", bn: "মোঃ রাদ্বীফ হাসান"}, pos: {en: "President", bn: "সভাপতি"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "./assets/committee/radif.jpg" },
+    { name: {en: "Fahmid Rahman Sakif", bn: "ফাহমিদ রহমান সাকিফ"}, pos: {en: "General Secretary", bn: "সাধারণ সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=FS&backgroundColor=b45309" },
+    { name: {en: "Arif Mahmud Fahad", bn: "আরিফ মাহমুদ ফাহাদ"}, pos: {en: "Organizing Secretary", bn: "সাংগঠনিক সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "./assets/committee/fahad.jpg" },
+    { name: {en: "Syedul Mursalin", bn: "সাইয়্যেদুল মুরসালিন"}, pos: {en: "General Member Representative", bn: "সাধারণ সদস্য প্রতিনিধি"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=SM&backgroundColor=b45309" },
+    { name: {en: "Masadunnobi Tapu", bn: "মাসাদুন্নবী তপু"}, pos: {en: "Publicity Secretary", bn: "প্রচার সম্পাদক"}, group: {en: 'Science 5', bn: 'বিজ্ঞান ৫'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=MT&backgroundColor=b45309" },
+    { name: {en: "Siyam Sheikh", bn: "সিয়াম শেখ"}, pos: {en: "Treasurer", bn: "কোষাধ্যক্ষ"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=SS&backgroundColor=b45309" },
+    { name: {en: "Md Tamim Hasan", bn: "মোঃ তামিম হাসান"}, pos: {en: "Educational Tour Secretary", bn: "শিক্ষা সফর বিষয়ক সম্পাদক"}, group: {en: 'Science 2', bn: 'বিজ্ঞান ২'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=TH&backgroundColor=b45309" }
+
+
+
     
 ];
 
@@ -299,7 +310,7 @@ function renderHeader() {
                             ${logoHtml}
                             <div class="flex flex-col hidden sm:flex">
                                 <span class="font-bold text-slate-900 leading-tight">${getLang(SITE_DATA.name)}</span>
-                                <span class="text-[10px] tracking-wider text-slate-500 font-medium uppercase">Mymensingh</span>
+                                <span class="text-[10px] tracking-wider text-slate-500 font-medium uppercase">${getLang(SITE_DATA.location)}</span>
                             </div>
                         </div>
                     </div>
@@ -421,7 +432,7 @@ function renderEvents() {
         <div class="fade-in max-w-5xl mx-auto px-4 py-12">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900">${t('events')}</h2>
-                <p class="text-slate-600 mt-2">Lectures, workshops, and competitions.</p>
+                <p class="text-slate-600 mt-2">${getLang(SITE_DATA.events)}</p>
             </div>
             <div class="space-y-6">
                 ${EVENTS.map(event => `
@@ -459,8 +470,8 @@ function renderEvents() {
             </div>
             
             <div class="mt-16 bg-slate-900 rounded-2xl p-8 text-center text-white">
-                <h3 class="text-xl font-bold mb-2">Want to host a talk?</h3>
-                <p class="text-slate-300 text-sm mb-6">We encourage students to share their knowledge.</p>
+                <h3 class="text-xl font-bold mb-2">${getLang(SITE_DATA.host)}</h3>
+                <p class="text-slate-300 text-sm mb-6">${getLang(SITE_DATA.encouragement)}</p>
                 <button onclick="navigate('CONTACT')" class="bg-ndcm-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors">
                     ${t('submit_proposal')}
                 </button>
@@ -555,7 +566,7 @@ function renderResources() {
         <div class="fade-in max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900">${t('resources')}</h2>
-                <p class="text-slate-600 mt-2">Tools, channels, and papers we love.</p>
+                <p class="text-slate-600 mt-2">${getLang(SITE_DATA.resources)}</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 ${RESOURCES.map(res => `
@@ -606,7 +617,7 @@ function renderFooter() {
     return `
         <footer class="bg-white border-t border-gray-100 py-8 mt-auto">
             <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-                &copy; ${getLang(SITE_DATA.year)} ${getLang(SITE_DATA.name)} • ${getLang(SITE_DATA.copyright)}
+                &copy; ${getLang(SITE_DATA.year)} • ${getLang(SITE_DATA.name)} ${getLang(SITE_DATA.location)} • ${getLang(SITE_DATA.copyright)}
             </div>
         </footer>
     `;
