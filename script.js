@@ -15,7 +15,8 @@ const SITE_DATA = {
     events: { en: "Lectures, workshops and competitions.", bn: "লেকচার, কর্মশালা এবং প্রতিযোগিতা"},
     host: { en: "Want to host a talk?", bn: "আলোচক হতে আগ্রহী?" },
     encouragement: { en: "We encourage students to share their knowledge.", bn: "আমরা শিক্ষার্থীদেরকে তাদের জ্ঞান বিতরণে উৎসাহিত করি।"},
-    resources: { en: "Tools, YouTube channels, and papers we love.", bn: "আমাদের পছন্দের হাতিয়ার, ইউটিউব চ্যানেল ও গবেষণাপত্রসমূহ"}
+    resources: { en: "Tools, YouTube channels, and papers we love.", bn: "আমাদের পছন্দের হাতিয়ার, ইউটিউব চ্যানেল ও গবেষণাপত্রসমূহ"},
+    articles: { en: "Back to Articles", bn: "প্রবন্ধে ফিরে যান"}
 }
 
 const DICTIONARY = {
@@ -522,7 +523,7 @@ function renderSingleArticle() {
 
     return `
         <div class="fade-in max-w-3xl mx-auto px-4 py-12">
-            <button onclick="navigate('ARTICLES')" class="mb-6 text-sm text-ndcm-primary hover:underline">← Back to Articles</button>
+            <button onclick="navigate('ARTICLES')" class="mb-6 text-sm text-ndcm-primary hover:underline">← ${getLang(SITE_DATA.articles)}</button>
             <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">${getLang(article.title)}</h1>
             <div class="flex items-center gap-4 mb-8 text-sm text-slate-500 border-b border-gray-100 pb-4">
                 <span class="font-bold text-slate-900">${getLang(article.author)}</span>
