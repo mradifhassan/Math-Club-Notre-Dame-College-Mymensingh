@@ -186,6 +186,7 @@ const ARTICLES = [
 ];
 
 const COMMITTEE = [
+    { name: {en: "Komol Chandra Sarker", bn: "কমল চন্দ্র সরকার"}, pos: {en: "Moderator", bn: "পরিচালক"}, group: {en: 'Lecturer at Mathematics Department', bn: 'প্রভাষক, গণিত বিভাগ'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=KS&backgroundColor=b45309" },
     { name: {en: "Md Radif Hasan", bn: "মোঃ রাদ্বীফ হাসান"}, pos: {en: "President", bn: "সভাপতি"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "./assets/committee/radif.jpg" },
     { name: {en: "Fahmid Rahman Sakif", bn: "ফাহমিদ রহমান সাকিফ"}, pos: {en: "General Secretary", bn: "সাধারণ সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "https://api.dicebear.com/7.x/initials/svg?seed=FS&backgroundColor=b45309" },
     { name: {en: "Arif Mahmud Fahad", bn: "আরিফ মাহমুদ ফাহাদ"}, pos: {en: "Organizing Secretary", bn: "সাংগঠনিক সম্পাদক"}, group: {en: 'Science 1', bn: 'বিজ্ঞান ১'}, img: "./assets/committee/fahad.jpg" },
