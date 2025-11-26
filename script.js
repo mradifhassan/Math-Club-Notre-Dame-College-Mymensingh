@@ -1,22 +1,18 @@
-/**
- * Math Club - Notre Dame College Mymensingh
- * Core Application Logic
- */
 
-// --- CONFIGURATION & CONSTANTS ---
 
-// Using a placeholder Formspree ID. User must replace this.
-const FORMSPREE_ID = "xdkvyoqy"; // Replace with your actual Formspree form ID
+const FORMSPREE_ID = "xdkvyoqy"; 
 
 const SITE_DATA = {
-    name: { en: "Math Club Notre Dame College", bn: "গণিত ক্লাব নটর ডেম কলেজ" },
+    name: { en: "Math Club Notre Dame College Mymensingh", bn: "গণিত ক্লাব নটর ডেম কলেজ ময়মনসিংহ" },
     college: { en: "Notre Dame College Mymensingh", bn: "নটর ডেম কলেজ ময়মনসিংহ" },
+    // Add your logo URL here. If empty, it defaults to the text logo.
+    logo: "./assets/logo.jpg", 
     email: "mathclub@ndcm.edu.bd",
     address: { en: "Barora, Mymensingh", bn: "বারেরা, ময়মনসিংহ" },
-    phone: "+880 1234 567890"
+    copyright: { en: "All rights reserved.", bn: "সর্বস্বত্ত্ব সংরক্ষিত।"},
+    phone: { en: "+880 1234 567890", bn: "+৮৮০ ১২৩৪ ৫৬৭৮৯০"},
+    year: { en: "2025", bn: "২০২৫"}
 };
-
-// --- BILINGUAL CONTENT DATABASE ---
 
 const DICTIONARY = {
     'home': { en: 'Home', bn: 'হোম' },
@@ -42,7 +38,20 @@ const DICTIONARY = {
     'name': { en: 'Name', bn: 'নাম' },
     'message': { en: 'Message', bn: 'বার্তা' },
     'equation_viz': { en: 'Equation Visualization', bn: 'সমীকরণ ভিজ্যুয়ালাইজেশন' },
-    'loading': { en: 'Loading...', bn: 'লোড হচ্ছে...' }
+    'loading': { en: 'Loading...', bn: 'লোড হচ্ছে...' },
+    'submit_draft': { en: 'Submit Draft', bn: 'খসড়া জমা দিন' },
+    'article_prompt': { en: 'Have an interesting math topic to write about?', bn: 'লেখার মতো কোনো মজার গণিত বিষয় আছে?' }
+};
+
+const ICONS = {
+    menu: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>`,
+    x: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`,
+    calendar: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>`,
+    clock: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+    location: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>`,
+    arrowRight: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>`,
+    chevronLeft: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>`,
+    chevronRight: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`
 };
 
 const NEWS_SLIDES = [
@@ -63,25 +72,51 @@ const NEWS_SLIDES = [
 ];
 
 const EVENTS = [
-    /*{
+    {
+        title: { en: "The Beauty of Prime Numbers", bn: "মৌলিক সংখ্যার সৌন্দর্য" },
+        date: { en: "OCT 15", bn: "১৫ অক্টোবর" },
+        time: { en: "4:00 PM", bn: "বিকেল ৪:০০" },
+        location: { en: "College Auditorium", bn: "কলেজ অডিটোরিয়াম" },
+        type: { en: "Lecture", bn: "লেকচার" },
+        desc: { en: "An exploration into the distribution of primes and the Riemann Hypothesis.", bn: "মৌলিক সংখ্যার বণ্টন এবং রিম্যান হাইপোথিসিস নিয়ে আলোচনা।" },
+        color: "bg-blue-100 text-blue-800"
+    },
+    {
         title: { en: "Inter-College Integration Bee", bn: "আন্তঃকলেজ ইন্টিগ্রেশন বি" },
-        date: { en: "DEC 03", bn: "০৩ ডিসেম্বর" },
+        date: { en: "NOV 02", bn: "০২ নভেম্বর" },
         time: { en: "2:30 PM", bn: "দুপুর ২:৩০" },
         location: { en: "Main Hall", bn: "মেইন হল" },
         type: { en: "Competition", bn: "প্রতিযোগিতা" },
         desc: { en: "Test your calculus skills against the best minds in Mymensingh.", bn: "ময়মনসিংহের সেরা মেধাবীদের সাথে আপনার ক্যালকুলাস দক্ষতা যাচাই করুন।" },
-        color: "bg-purple-100 text-purple-800",
-        link: "https://docs.google.com/forms" // Placeholder for registration form
-    },*/
+        color: "bg-purple-100 text-purple-800"
+    },
     {
-        title: { en: "The Beauty of Prime Numbers", bn: "মৌলিক সংখ্যার সৌন্দর্য" },
-        date: { en: "DEC 03", bn: "০৩ ডিসেম্বর" },
-        time: { en: "12:00 PM", bn: "দুপুর ১২:০০" },
-        location: { en: "Room 402 | By Kamal Chandra Sarker", bn: "কক্ষ ৪০২ | কমল চন্দ্র সরকার" },
+        title: { en: "Math Olympiad Prep", bn: "গণিত অলিম্পিয়াড প্রস্তুতি" },
+        date: { en: "NOV 10", bn: "১০ নভেম্বর" },
+        time: { en: "3:00 PM", bn: "বিকেল ৩:০০" },
+        location: { en: "Room 201", bn: "কক্ষ ২০১" },
+        type: { en: "Workshop", bn: "কর্মশালা" },
+        desc: { en: "Problem-solving strategies for the upcoming National Math Olympiad.", bn: "আসন্ন জাতীয় গণিত অলিম্পিয়াডের জন্য সমস্যা সমাধানের কৌশল।" },
+        color: "bg-orange-100 text-orange-800"
+    },
+    {
+        title: { en: "Intro to Topology", bn: "টপোলজির পরিচিতি" },
+        date: { en: "NOV 18", bn: "১৮ নভেম্বর" },
+        time: { en: "4:00 PM", bn: "বিকেল ৪:০০" },
+        location: { en: "College Auditorium", bn: "কলেজ অডিটোরিয়াম" },
         type: { en: "Lecture", bn: "লেকচার" },
-        desc: { en: "An exploration into the distribution of primes and Riemann Hypothesis.", bn: "মৌলিক সংখ্যার বণ্টন এবং রিম্যান হাইপোথিসিস নিয়ে আলোচনা।" },
+        desc: { en: "Understanding shapes, surfaces, and why a coffee mug is a donut.", bn: "আকৃতি, তল এবং কেন একটি কফি মগ একটি ডোনাটের সমান তা বোঝা।" },
         color: "bg-blue-100 text-blue-800"
     }
+];
+
+const RESOURCES = [
+    { title: "3Blue1Brown", type: {en: "Video", bn: "ভিডিও"}, desc: {en: "Visual explanations of complex math concepts.", bn: "জটিল গণিত ধারণার ভিজ্যুয়াল ব্যাখ্যা।"}, link: "https://www.3blue1brown.com/" },
+    { title: "Project Euler", type: {en: "Tool", bn: "টুল"}, desc: {en: "Challenging mathematical/computer programming problems.", bn: "চ্যালেঞ্জিং গাণিতিক/কম্পিউটার প্রোগ্রামিং সমস্যা।"}, link: "https://projecteuler.net/" },
+    { title: "Wolfram Alpha", type: {en: "Tool", bn: "টুল"}, desc: {en: "Computational intelligence engine.", bn: "কম্পিউটেশনাল ইন্টেলিজেন্স ইঞ্জিন।"}, link: "https://www.wolframalpha.com/" },
+    { title: "The Art of Problem Solving", type: {en: "Course", bn: "কোর্স"}, desc: {en: "Resources for competition math.", bn: "প্রতিযোগিতামূলক গণিতের জন্য রিসোর্স।"}, link: "https://artofproblemsolving.com/" },
+    { title: "Overleaf", type: {en: "Tool", bn: "টুল"}, desc: {en: "Online LaTeX editor for papers.", bn: "গবেষণাপত্রের জন্য অনলাইন LaTeX এডিটর।"}, link: "https://www.overleaf.com/" },
+    { title: "arXiv Mathematics", type: {en: "Paper", bn: "পেপার"}, desc: {en: "Open access to preprints in Mathematics.", bn: "গণিতের গবেষণাপত্র বা প্রিপ্রিন্টের উন্মুক্ত ভাণ্ডার।"}, link: "https://arxiv.org/archive/math" }
 ];
 
 const ARTICLES = [
@@ -247,6 +282,10 @@ function render() {
 function renderHeader() {
     const navLinks = ['HOME', 'EVENTS', 'ARTICLES', 'RESOURCES', 'COMMITTEE', 'CONTACT'];
     
+    const logoHtml = SITE_DATA.logo 
+        ? `<img src="${SITE_DATA.logo}" alt="Logo" class="w-10 h-10 rounded-full object-cover shadow-md group-hover:scale-105 transition-transform bg-white">`
+        : `<div class="w-10 h-10 bg-ndcm-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-md group-hover:bg-ndcm-accent transition-colors">Σ</div>`;
+
     return `
         <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 transition-all">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -257,9 +296,7 @@ function renderHeader() {
                             ${state.lang === 'en' ? 'BN' : 'EN'}
                         </button>
                         <div class="flex items-center gap-3 cursor-pointer group" onclick="navigate('HOME')">
-                            <div class="w-10 h-10 bg-ndcm-primary text-white rounded-lg flex items-center justify-center font-bold text-xl shadow-md group-hover:bg-ndcm-accent transition-colors">
-                                Σ
-                            </div>
+                            ${logoHtml}
                             <div class="flex flex-col hidden sm:flex">
                                 <span class="font-bold text-slate-900 leading-tight">${getLang(SITE_DATA.name)}</span>
                                 <span class="text-[10px] tracking-wider text-slate-500 font-medium uppercase">Mymensingh</span>
@@ -368,7 +405,7 @@ function renderHome() {
                             </svg>
                             <!-- LaTeX Equation Overlay -->
                             <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg border border-gray-100 shadow text-sm font-mono text-ndcm-primary pointer-events-none">
-                                <span id="math-label">$$ y = \sin(ax + t) $$</span>
+                                <span id="math-label"></span>
                             </div>
                             <div class="absolute top-4 right-4 text-xs text-slate-400">Click to change graph</div>
                         </div>
@@ -382,22 +419,29 @@ function renderHome() {
 function renderEvents() {
     return `
         <div class="fade-in max-w-5xl mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">${t('events')}</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">${t('events')}</h2>
+                <p class="text-slate-600 mt-2">Lectures, workshops, and competitions.</p>
+            </div>
             <div class="space-y-6">
                 ${EVENTS.map(event => `
                     <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
                         <div class="flex-shrink-0 w-full md:w-32 bg-slate-50 rounded-lg p-4 text-center border border-gray-200">
-                            <div class="text-xs font-bold text-slate-500 uppercase">Date</div>
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Date</div>
                             <div class="text-xl font-bold text-ndcm-primary">${getLang(event.date)}</div>
                         </div>
                         <div class="flex-grow">
                             <div class="flex items-center gap-3 mb-2">
                                 <span class="text-[10px] font-bold uppercase px-2 py-1 rounded ${event.color}">${getLang(event.type)}</span>
-                                <div class="text-xs text-slate-500 font-medium">${getLang(event.time)}</div>
+                                <div class="flex items-center gap-1 text-xs text-slate-500 font-medium">
+                                    ${ICONS.clock} ${getLang(event.time)}
+                                </div>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">${getLang(event.title)}</h3>
                             <p class="text-slate-600 text-sm mb-3">${getLang(event.desc)}</p>
-                            <div class="text-xs text-slate-500 font-medium">📍 ${getLang(event.location)}</div>
+                            <div class="flex items-center gap-1 text-xs text-slate-500 font-medium">
+                                ${ICONS.location} ${getLang(event.location)}
+                            </div>
                         </div>
                         <div class="flex-shrink-0 w-full md:w-auto">
                             ${event.link ? `
@@ -405,13 +449,21 @@ function renderEvents() {
                                     ${t('register')}
                                 </a>
                             ` : `
-                                <button class="w-full md:w-auto px-6 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-lg hover:bg-slate-50">
+                                <button class="w-full md:w-auto px-6 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-lg hover:bg-slate-50 hover:border-ndcm-primary hover:text-ndcm-primary transition-all">
                                     ${t('rsvp')}
                                 </button>
                             `}
                         </div>
                     </div>
                 `).join('')}
+            </div>
+            
+            <div class="mt-16 bg-slate-900 rounded-2xl p-8 text-center text-white">
+                <h3 class="text-xl font-bold mb-2">Want to host a talk?</h3>
+                <p class="text-slate-300 text-sm mb-6">We encourage students to share their knowledge.</p>
+                <button onclick="navigate('CONTACT')" class="bg-ndcm-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors">
+                    ${t('submit_proposal')}
+                </button>
             </div>
         </div>
     `;
@@ -441,6 +493,13 @@ function renderArticles() {
                         </div>
                     </div>
                 `).join('')}
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-slate-600 mb-4">${t('article_prompt')}</p>
+                <button onclick="navigate('CONTACT')" class="inline-flex items-center gap-2 border border-ndcm-primary text-ndcm-primary px-6 py-2 rounded-full font-medium hover:bg-ndcm-primary hover:text-white transition-colors">
+                    ${t('submit_draft')} ${ICONS.arrowRight}
+                </button>
             </div>
         </div>
     `;
@@ -492,19 +551,23 @@ function renderCommittee() {
 }
 
 function renderResources() {
-    const resources = [
-        { title: "3Blue1Brown", desc: "Visual Math", link: "https://www.3blue1brown.com/" },
-        { title: "Wolfram Alpha", desc: "Computational Engine", link: "https://www.wolframalpha.com/" },
-        { title: "Overleaf", desc: "LaTeX Editor", link: "https://www.overleaf.com/" }
-    ];
     return `
-        <div class="fade-in max-w-4xl mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-16">${t('resources')}</h2>
+        <div class="fade-in max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">${t('resources')}</h2>
+                <p class="text-slate-600 mt-2">Tools, channels, and papers we love.</p>
+            </div>
             <div class="grid md:grid-cols-3 gap-6">
-                ${resources.map(res => `
-                    <a href="${res.link}" target="_blank" class="bg-white p-6 rounded-xl border border-gray-100 card-hover text-center">
-                        <h3 class="font-bold text-lg mb-2">${res.title}</h3>
-                        <p class="text-slate-600 text-sm">${res.desc}</p>
+                ${RESOURCES.map(res => `
+                    <a href="${res.link}" target="_blank" class="block bg-white p-6 rounded-xl border border-gray-100 card-hover group h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold uppercase bg-slate-100 text-slate-600 px-2 py-1 rounded">${getLang(res.type)}</span>
+                            <span class="text-slate-300 group-hover:text-ndcm-accent transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-ndcm-primary transition-colors">${res.title}</h3>
+                        <p class="text-sm text-slate-600">${getLang(res.desc)}</p>
                     </a>
                 `).join('')}
             </div>
@@ -521,7 +584,7 @@ function renderContact() {
                     <div class="space-y-4 text-sm opacity-90">
                         <p>${SITE_DATA.email}</p>
                         <p>${getLang(SITE_DATA.address)}</p>
-                        <p>${SITE_DATA.phone}</p>
+                        <p>${getLang(SITE_DATA.phone)}</p>
                     </div>
                 </div>
                 <div class="md:col-span-3 p-8">
@@ -543,7 +606,7 @@ function renderFooter() {
     return `
         <footer class="bg-white border-t border-gray-100 py-8 mt-auto">
             <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-                &copy; 2024 ${getLang(SITE_DATA.name)}. All rights reserved.
+                &copy; ${getLang(SITE_DATA.year)} ${getLang(SITE_DATA.name)} • ${getLang(SITE_DATA.copyright)}
             </div>
         </footer>
     `;
