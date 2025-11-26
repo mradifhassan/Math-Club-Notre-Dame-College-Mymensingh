@@ -1,5 +1,3 @@
-
-
 const FORMSPREE_ID = "xdkvyoqy"; 
 
 const SITE_DATA = {
@@ -137,7 +135,7 @@ const ARTICLES = [
             bn: "ভাবুন এমন একটি হোটেল যার কক্ষ সংখ্যা অসীম এবং সবগুলোই পূর্ণ। নতুন অতিথি এলে কি হবে?" 
         },
         image: "https://imgs.search.brave.com/eya5oUzh8bfOlXm79fOZbzgGjQYzYCovr_CWi1zfQRA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1tYW5hZ2VyLnN0/YXJzaW5zaWRlci5j/b20vZ2FsbGVyeS8x/MDgwL25hXzY3ZGFk/NGMyZjM0MzkuanBn",
-        // Content containing LaTeX
+
         content: {
             en: `
                 <p>Hilbert's paradox of the Grand Hotel is a thought experiment which illustrates a counterintuitive property of infinite sets.</p>
@@ -201,23 +199,19 @@ const COMMITTEE = [
     
 ];
 
-// --- STATE MANAGEMENT ---
-
 let state = {
     view: 'HOME',
-    articleId: null, // For single article view
-    lang: 'en', // 'en' or 'bn'
+    articleId: null, 
+    lang: 'en', 
     menuOpen: false,
     currentSlide: 0,
-    graphMode: 0 // 0: Lissajous, 1: Butterfly, 2: SineGrid
+    graphMode: 0 
 };
 
-// --- HELPER FUNCTIONS ---
 
 const t = (key) => DICTIONARY[key] ? DICTIONARY[key][state.lang] : key;
 const getLang = (obj) => obj ? obj[state.lang] : '';
 
-// --- NAVIGATION & RENDERING CORE ---
 
 const app = document.getElementById('app');
 let mathAnimationId;
@@ -238,7 +232,7 @@ function toggleLanguage() {
     state.lang = state.lang === 'en' ? 'bn' : 'en';
     updateBodyLang();
     render();
-    if(state.view === 'HOME') initMathAnimation(); // Re-init graph for labels if any
+    if(state.view === 'HOME') initMathAnimation(); 
 }
 
 function navigate(viewName, params = null) {
@@ -248,7 +242,7 @@ function navigate(viewName, params = null) {
     window.scrollTo(0, 0);
     render();
     
-    // Lifecycle hooks
+    
     if (mathAnimationId) cancelAnimationFrame(mathAnimationId);
     
     if (viewName === 'HOME') {
@@ -257,7 +251,6 @@ function navigate(viewName, params = null) {
     }
 }
 
-// LaTeX Auto-Render trigger
 function renderMath() {
     if (window.renderMathInElement) {
         renderMathInElement(document.body, {
@@ -272,7 +265,6 @@ function renderMath() {
     }
 }
 
-// --- RENDERERS ---
 
 function render() {
     app.innerHTML = `
@@ -283,7 +275,7 @@ function render() {
         ${renderFooter()}
     `;
     
-    renderMath(); // Apply LaTeX
+    renderMath(); 
     
     if (state.view === 'HOME') {
         initMathAnimation();
@@ -363,7 +355,6 @@ function renderView() {
     }
 }
 
-// --- VIEW COMPONENTS ---
 
 function renderHome() {
     return `
@@ -624,8 +615,6 @@ function renderFooter() {
     `;
 }
 
-// --- LOGIC: SLIDER & GRAPH ---
-
 function startSlider() {
     if (sliderInterval) clearInterval(sliderInterval);
     sliderInterval = setInterval(() => {
@@ -647,16 +636,16 @@ function toggleGraphMode() {
 function initMathAnimation() {
     let t = 0;
     const labels = [
-        "$$ x=A\\sin(at+\\delta), y=B\\sin(bt) $$", // Lissajous
-        "$$ r = e^{\\sin\\theta} - 2\\cos(4\\theta) $$", // Butterfly
-        "$$ z = \\sin(x^2 + y^2) $$" // Ripple
+        "$$ x=A\\sin(at+\\delta), y=B\\sin(bt) $$", 
+        "$$ r = e^{\\sin\\theta} - 2\\cos(4\\theta) $$", 
+        "$$ z = \\sin(x^2 + y^2) $$" 
     ];
 
     // Update Label
     const labelEl = document.getElementById('math-label');
     if(labelEl) {
         labelEl.innerHTML = labels[state.graphMode];
-        renderMath(); // Re-render LaTeX for the new label
+        renderMath(); 
     }
 
     function animate() {
@@ -669,7 +658,6 @@ function initMathAnimation() {
         const cx = width / 2, cy = height / 2;
         
         if (state.graphMode === 0) {
-            // Lissajous
             const scale = 140;
             for (let i = 0; i <= 200; i++) {
                 const theta = (i / 200) * Math.PI * 2;
@@ -678,21 +666,17 @@ function initMathAnimation() {
                 points.push(`${x},${y}`);
             }
         } else if (state.graphMode === 1) {
-            // Butterfly Curve
             const scale = 35;
             for (let i = 0; i <= 300; i++) {
-                const theta = (i / 300) * Math.PI * 12; // Multiple loops
+                const theta = (i / 300) * Math.PI * 12; 
                 const r = Math.exp(Math.sin(theta)) - 2 * Math.cos(4 * theta) + Math.pow(Math.sin((2 * theta - Math.PI) / 24), 5);
-                // Rotate whole graph with time t
                 const rotX = r * Math.cos(theta + t*0.5);
                 const rotY = r * Math.sin(theta + t*0.5);
                 points.push(`${cx + rotX * scale},${cy + rotY * scale}`);
             }
         } else {
-            // 3D-ish Ripple Grid (Simple Isymetric Projection)
             const scale = 30;
             for (let x = -5; x <= 5; x += 0.2) {
-                // Just drawing one cross section line for performance in SVG path
                 const yVal = Math.sin(x*x + t) * 2; 
                 const isoX = cx + (x * scale);
                 const isoY = cy + (yVal * 10);
@@ -708,6 +692,5 @@ function initMathAnimation() {
     mathAnimationId = requestAnimationFrame(animate);
 }
 
-// --- BOOTSTRAP ---
 window.onpopstate = (e) => e.state && navigate(e.state.view);
 init();

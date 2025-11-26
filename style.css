@@ -1,10 +1,8 @@
-/* Global Settings */
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Toggles */
 body.lang-en {
     font-family: 'Ubuntu', sans-serif;
 }
@@ -12,7 +10,6 @@ body.lang-bn {
     font-family: 'Kalpurush', sans-serif;
 }
 
-/* Page Transitions */
 .fade-in {
     animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -22,7 +19,6 @@ body.lang-bn {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* News Slider */
 .slider-container {
     position: relative;
     width: 100%;
@@ -40,7 +36,6 @@ body.lang-bn {
     flex-shrink: 0;
 }
 
-/* Card Hover Effects */
 .card-hover {
     transition: all 0.3s ease;
 }
@@ -49,13 +44,11 @@ body.lang-bn {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-/* SVG Graph Animations */
 #math-vis-path {
-    transition: d 0.05s linear; /* Smooth linear interpolation for animation */
+    transition: d 0.05s linear;
     filter: drop-shadow(0 0 3px rgba(76, 29, 149, 0.4));
 }
 
-/* LaTeX Container Overrides */
 .katex-display {
     margin: 0.5em 0 !important;
     overflow-x: auto;
@@ -67,7 +60,6 @@ body.lang-bn {
     line-height: 1.7;
 }
 
-/* Mobile Menu */
 .mobile-menu-enter {
     animation: slideDown 0.2s ease-out forwards;
 }
@@ -76,7 +68,6 @@ body.lang-bn {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Formspree Form */
 input:focus, textarea:focus {
     box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.1);
 }
