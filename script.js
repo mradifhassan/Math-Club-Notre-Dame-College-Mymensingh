@@ -43,7 +43,7 @@ const DICTIONARY = {
     'equation_viz': { en: 'Equation Visualization', bn: 'সমীকরণ চিত্র' },
     'loading': { en: 'Loading...', bn: 'লোড হচ্ছে...' },
     'submit_draft': { en: 'Submit Draft', bn: 'খসড়া জমা দিন' },
-    'article_prompt': { en: 'Have an interesting math topic to write about?', bn: 'লেখার মতো কোনো মজার গণিত বিষয় আছে?' }
+    'article_prompt': { en: 'Have an interesting math topic to write about?', bn: 'গণিত নিয়ে লেখার মতো কোনো মজার বিষয় আছে?' }
 };
 
 const ICONS = {
