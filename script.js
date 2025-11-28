@@ -302,7 +302,6 @@ function renderHeader() {
         <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 transition-all">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
-                    <!-- Logo & Lang Toggle -->
                     <div class="flex items-center gap-4">
                         <button onclick="toggleLanguage()" class="text-xs font-bold border border-slate-300 rounded px-2 py-1 text-slate-500 hover:text-ndcm-primary hover:border-ndcm-primary transition-colors">
                             ${state.lang === 'en' ? 'BN' : 'EN'}
@@ -316,7 +315,6 @@ function renderHeader() {
                         </div>
                     </div>
 
-                    <!-- Desktop Nav -->
                     <div class="hidden md:flex items-center gap-1">
                         ${navLinks.map(link => `
                             <button onclick="navigate('${link}')" class="px-3 py-2 text-sm font-medium transition-colors duration-200 ${state.view === link ? 'text-ndcm-accent font-bold' : 'text-slate-600 hover:text-ndcm-primary'}">
@@ -325,7 +323,6 @@ function renderHeader() {
                         `).join('')}
                     </div>
 
-                    <!-- Mobile Menu Button -->
                     <div class="md:hidden flex items-center">
                         <button onclick="state.menuOpen = !state.menuOpen; renderHeader();" class="text-slate-600 p-2">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${state.menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}"></path></svg>
@@ -334,7 +331,6 @@ function renderHeader() {
                 </div>
             </div>
             
-            <!-- Mobile Menu -->
             ${state.menuOpen ? `
                 <div class="md:hidden bg-white border-t border-gray-100 mobile-menu-enter shadow-lg absolute w-full">
                     <div class="px-2 pt-2 pb-3 space-y-1">
@@ -369,7 +365,7 @@ function renderHome() {
         <div class="fade-in">
             <section class="relative pt-8 pb-20 overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <!-- News Ticker -->
+           
                     <div class="mb-12">
                         <div class="slider-container bg-slate-50 rounded-xl border border-gray-200 h-28 shadow-inner relative overflow-hidden">
                             <div class="slider-track h-full" id="slider-track">
@@ -389,7 +385,6 @@ function renderHome() {
                         </div>
                     </div>
 
-                    <!-- Hero Grid -->
                     <div class="grid lg:grid-cols-2 gap-12 items-center">
                         <div class="space-y-6">
                             <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
@@ -408,13 +403,12 @@ function renderHome() {
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Graph Visualization Area -->
+                     
                         <div class="relative h-[400px] bg-slate-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex items-center justify-center cursor-pointer" onclick="toggleGraphMode()">
                             <svg id="math-vis" width="100%" height="100%" viewBox="0 0 400 400" class="absolute inset-0 text-ndcm-accent opacity-80">
                                 <path id="math-vis-path" d="" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <!-- LaTeX Equation Overlay -->
+                   
                             <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg border border-gray-100 shadow text-sm font-mono text-ndcm-primary pointer-events-none">
                                 <span id="math-label"></span>
                             </div>
