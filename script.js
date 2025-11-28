@@ -649,7 +649,6 @@ function initMathAnimation() {
         "$$ z = \\sin(x^2 + y^2) $$" 
     ];
 
-    // Update Label
     const labelEl = document.getElementById('math-label');
     if(labelEl) {
         labelEl.innerHTML = labels[state.graphMode];
