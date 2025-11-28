@@ -12,7 +12,7 @@ const SITE_DATA = {
     location: { en: "Mymensingh", bn: "ময়মনসিংহ"},
     events: { en: "Lectures, workshops and competitions.", bn: "লেকচার, কর্মশালা এবং প্রতিযোগিতা"},
     host: { en: "Want to host a talk?", bn: "আলোচক হতে আগ্রহী?" },
-    encouragement: { en: "We encourage students to share their knowledge.", bn: "আমরা শিক্ষার্থীদেরকে তাদের জ্ঞান বিতরণে উৎসাহিত করি।"},
+    encouragement: { en: "We encourage students to share their knowledge.", bn: "আমরা শিক্ষার্থীদেরকে তাদের জ্ঞান সবার মাঝে ছড়িয়ে দিতে উদ্বুদ্ধ করি।"},
     resources: { en: "Tools, YouTube channels, and papers we love.", bn: "আমাদের পছন্দের হাতিয়ার, ইউটিউব চ্যানেল ও গবেষণাপত্রসমূহ"},
     articles: { en: "Back to Articles", bn: "প্রবন্ধে ফিরে যান"}
 }
