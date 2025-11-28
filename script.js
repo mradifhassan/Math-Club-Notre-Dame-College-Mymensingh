@@ -119,7 +119,13 @@ const RESOURCES = [
     { title: "Wolfram Alpha", type: {en: "Tool", bn: "টুল"}, desc: {en: "Computational intelligence engine.", bn: "কম্পিউটেশনাল ইন্টেলিজেন্স ইঞ্জিন।"}, link: "https://www.wolframalpha.com/" },
     { title: "The Art of Problem Solving", type: {en: "Course", bn: "কোর্স"}, desc: {en: "Resources for competition math.", bn: "প্রতিযোগিতামূলক গণিতের জন্য রিসোর্স।"}, link: "https://artofproblemsolving.com/" },
     { title: "Overleaf", type: {en: "Tool", bn: "টুল"}, desc: {en: "Online LaTeX editor for papers.", bn: "গবেষণাপত্রের জন্য অনলাইন LaTeX এডিটর।"}, link: "https://www.overleaf.com/" },
-    { title: "arXiv Mathematics", type: {en: "Paper", bn: "পেপার"}, desc: {en: "Open access to preprints in Mathematics.", bn: "গণিতের গবেষণাপত্র বা প্রিপ্রিন্টের উন্মুক্ত ভাণ্ডার।"}, link: "https://arxiv.org/archive/math" }
+    { title: "arXiv Mathematics", type: {en: "Paper", bn: "পেপার"}, desc: {en: "Open access to preprints in Mathematics.", bn: "গণিতের গবেষণাপত্র বা প্রিপ্রিন্টের উন্মুক্ত ভাণ্ডার।"}, link: "https://arxiv.org/archive/math" },
+    { title: "Numberphile", type: {en: "Video", bn: "ভিডিও"}, desc: {en: "Extensive discussion on some interesting topics in Mathematics.", bn: "গণিতের কিছু মজার বিষয় নিয়ে বিস্তর আলোচনা।"}, link: "https://www.numberphile.com/"},
+    { title: "Computerphile", type: {en: "Video", bn: "ভিডিও"}, desc: {en: "Extensive discussion on some interesting topics in Computer Science.", bn: "কম্পিউটার বিজ্ঞানের মজার কিছু বিষয় নিয়ে বিস্তর আলোচনা।"}, link: "https://www.numberphile.com/"},
+    { title: "Desmos", type: {en: "Tool", bn: "টুল"}, desc: {en: "Online Graph calculator for function visualization.", bn: "অন্তরকের দৃশ্যকল্প উপস্থাপনা করার জন্য অনলাইন ক্যালকুলেটর।"}, link: "https://www.desmos.com/calculator" },
+    { title: "Reducible", type: {en: "Video", bn: "ভিডিও"}, desc: {en: "All about animating computer science concepts in a fun, interactive, and intuitive manner.", bn: "কম্পিউটার বিজ্ঞানের ধারণাগুলোকে মজার, অংশগ্রহণভিত্তিক এবং সহজবোধ্যভাবে গতিশীল চিত্রের মাধ্যমে উপস্থাপন করা।"}, link: "https://www.youtube.com/@Reducible" },
+    { title: "Chamok Hasan", type: {en: "Video", bn: "ভিডিও"}, desc: {en: "Represnting the entire beauty and arising love for Mathematics through interactive discussion", bn: "অনশগ্রহনভিত্তিক আলোচনার মাধ্যমে গণিতের সম্পূর্ণ সৌন্দর্য উপস্থাপন করা এবং গণিতের প্রতি ভালোবাসা জাগিয়ে তোলা।"}, link: "https://www.youtube.com/@ChamokHasan"}
+
 ];
 
 const ARTICLES = [
