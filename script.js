@@ -22,7 +22,7 @@ const DICTIONARY = {
     'events': { en: 'Events', bn: 'অনুষ্ঠানসমূহ' },
     'articles': { en: 'Articles', bn: 'প্রবন্ধ' },
     'resources': { en: 'Resources', bn: 'উপকরনসমূহ' },
-    'committee': { en: 'Committee', bn: 'কমিটি' },
+    'committee': { en: 'Committee', bn: 'কার্যনির্বাহক সভা' },
     'contact': { en: 'Contact', bn: 'যোগাযোগ' },
     'join_now': { en: 'Join Now', bn: 'যোগ দিন' },
     'read_more': { en: 'Read More', bn: 'আরও পড়ুন' },
